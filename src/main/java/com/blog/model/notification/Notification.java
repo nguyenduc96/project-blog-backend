@@ -1,11 +1,9 @@
 package com.blog.model.notification;
 
+import com.blog.model.user.User;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -14,5 +12,17 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    @ManyToOne
+    private User sender;
+
+    private String action;
+
+    private String date;
+
+    @ManyToOne
+    private User receiver;
+
+    private boolean status;
+
+    private String link;
 }
