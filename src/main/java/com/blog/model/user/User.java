@@ -1,11 +1,10 @@
 package com.blog.model.user;
 
+import com.blog.model.role.Role;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -25,4 +24,7 @@ public class User {
     private String phone;
 
     private String avatar;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
 }
